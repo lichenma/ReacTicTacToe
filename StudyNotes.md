@@ -26,3 +26,13 @@ import React from 'react';
 import ReactDOM from 'react-dom'; 
 import './index.css'; 
 ```
+
+## Overview 
+
+Now that we have the setup complete let's go over an overview of React. 
+
+### What is React? 
+
+React is a declartive, efficient, and flexible JavaScript library for building user interfaces. It lets users compost complex User Interfaces from small and isolated pieces of code called **components**. 
+
+React has many different types of components but we will start with `React.Component` subclasses. 
