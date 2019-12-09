@@ -59,5 +59,18 @@ We use components to tell React what we want to see on the screen. When our data
 In this case ShoppingList is a **React component class / React component type**. A component takes in parameters, called **props** (properties) and returns a hierarchy of views to display via the `render` method. 
 
 
+The `render` method returns a description of what you want to see on the screen. React takes the description and displays the result. In particular, `render` returns a **React element** which is a lightweight description of what to render. Most React developers use a special syntax called `JSX` which makes these structures easier to write. The `<div />` syntax is transformed at build time to `Reach.createElement('div')`. The above example is equivalent to: 
+
+```js
+return React.createElement('div', {className: 'shoppping-list'}),
+    React.createElement('h1', /* ... h1 children ... */),
+    React.createElement('u1', /* ... u1 children ... */)
+);
+```
+
+`createElement()` is described in more detail in the API reference, but we will continue using JSX in this project. 
+
+JSX comes with the full power of JavaScript. Any JavaScript expressions can be placed within braces inside JSX. Each React element is a JavaScript object that can be stored in a variable or passed around in the program. 
+
 
 
