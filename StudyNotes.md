@@ -36,3 +36,28 @@ Now that we have the setup complete let's go over an overview of React.
 React is a declartive, efficient, and flexible JavaScript library for building user interfaces. It lets users compost complex User Interfaces from small and isolated pieces of code called **components**. 
 
 React has many different types of components but we will start with `React.Component` subclasses. 
+
+```javascript
+class ShoppingList extends React.Component {
+    render(){
+        return {
+            <div className="shopping-list">
+                <h1>Shopping List for {this.props.name}</h1>
+                <u1>
+                    <li>Instagram</li>
+                </u1>
+            </div>
+        };
+    }
+}
+
+// usage <ShoppingList name="Mark"/>
+```
+
+We use components to tell React what we want to see on the screen. When our data changes, React will efficiently update and re-render our components. 
+
+In this case ShoppingList is a **React component class / React component type**. A component takes in parameters, called **props** (properties) and returns a hierarchy of views to display via the `render` method. 
+
+
+
+
