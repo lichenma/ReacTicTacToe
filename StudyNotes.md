@@ -202,3 +202,19 @@ At this point we have completed "passing a prop" from a parent Board component t
 
 ## Making an Interactive Component 
 
+Now let's make it so that the Square component is filled with an "X" when we click it. First, change the button tag that is returned from the Square component's `render()` function: 
+
+```javascript 
+class Square extends React.Component { 
+    render(){
+        return (
+            <button className="square" onClick=
+            {function() { alert('click'); }}>
+                {this.props.value}
+            </button>
+        );
+    }
+}
+```
+
+Now if we click on a Square, an alert should pop up in the browser. 
