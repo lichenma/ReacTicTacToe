@@ -33,7 +33,7 @@ Now that we have the setup complete let's go over an overview of React.
 
 ### What is React? 
 
-React is a declartive, efficient, and flexible JavaScript library for building user interfaces. It lets users compost complex User Interfaces from small and isolated pieces of code called **components**. 
+React is a declartive, efficient, and flexible JavaScript library for building user interfaces. It lets users compose complex User Interfaces from small and isolated pieces of code called **components**. 
 
 React has many different types of components but we will start with `React.Component` subclasses. 
 
@@ -73,4 +73,9 @@ return React.createElement('div', {className: 'shoppping-list'}),
 JSX comes with the full power of JavaScript. Any JavaScript expressions can be placed within braces inside JSX. Each React element is a JavaScript object that can be stored in a variable or passed around in the program. 
 
 
+The `ShoppingList` component above only renders built-in DOM components like `<div />` and `<li />` but the developer can compose and render custom React components too. For example, we can now refer to the whole shopping list by writing `<ShoppingList />`. Each React component is encapsulated and can operate independently; this allows users to build complex UIs from simple components. 
 
+
+## Inspecting the Starter Code 
+
+We will not be worrying about the CSS styling in this project and will instead be focusing on the React content of `src/index.js`. 
