@@ -162,3 +162,43 @@ ReactDOM.render(
 
 The Square component renders a single `<button>` and the Board renders 9 squares. The Game component renders a board with placeholder values which will be modified later. There are currently no interactive components. 
 
+
+
+
+## Passing Data Through Props 
+
+To get started we will try passing some data from the Board component to the Square component. 
+
+In Board's `renderSquare` method, we will be changing the code to pass a prop called `value` to the Square: 
+
+
+```javascript
+class Board extends React.Component {
+    renderSquare(i){
+        return <Square value={i} />;
+    }
+}
+```
+
+Change Square's render method to show this value: 
+
+```javascript
+class Square extends React.Component {
+    render() {
+        return (
+            <button className="square">
+                {this.props.value}
+            </button>
+        ); 
+    }
+}
+```
+
+Now when we run `npm start` we should see a number in each square in the rendered output. 
+
+At this point we have completed "passing a prop" from a parent Board component to a child Square component. Passing props is how information flows in React apps, from parents to children. 
+
+
+
+## Making an Interactive Component 
+
