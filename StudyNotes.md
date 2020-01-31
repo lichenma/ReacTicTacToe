@@ -246,4 +246,43 @@ Notice that with `onClick={()=> alert('click')}` we are passing a function as th
 For the next step, we want the Square component to "remember" that it got clicked, and fill it with an "X" mark. To "remember" things, components use `state`. 
 
 
-React components can have state by setting `this.state` in their constructors. `this.state` should be considered as private to a React component that it's defined in. 
+React components can have state by setting `this.state` in their constructors. `this.state` should be considered as private to a React component that it's defined in. Let's store the current value of the Square in `this.state`, and change it when the Square is clicked. 
+
+First we will add a constructor to the class to initialize the state: 
+
+
+```javascript
+class Square extends React.Component {
+  constructor(props) {
+    super(props); 
+    this.state = {
+      value: null,
+    };
+  }
+
+  render() {
+    return (
+      <button className="square" onClick={() => alert('click')}>
+        {this.props.value}
+      </button>
+    );
+  }
+}
+```
+
+Note: In JavaScript classes, you always need to call `super` when definining the constructor of a subclass. All React component class that have a `constructor` should start it with a `super(props)` call. 
+
+
+Now we will change the Square's render method to display the current stat's value when clicked: 
+
+- replace `this.props.value` with `this.state.value` inside the `<button>` tag
+- replace the `onClick={}` event handler with `onClick={() => this.setState({value: 'X'})}
+- put the `className` and `onClick` props on separate lines for better readability. 
+
+
+After these changes, the `<button>` tag that is retured by Square's `render` method looks like this: 
+
+
+```javascript
+
+```
