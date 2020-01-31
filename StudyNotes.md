@@ -3,6 +3,13 @@
 This project was created using the help of the tutorial provided by `reactjs`, and was meant as a starter project introducing me to many of the functionalities provided by React. 
 
 
+## Comparison of Angular vs React 
+
+This is a topic that comes up a lot so I thought I would make some docs regarding the two javascript frameworks. 
+
+React is a Facebook managed Javascript library for UI development meanwhile Angular is a Google managed framework which is TypeScript-based. 
+
+
 ## Setup
 
 1. Ensure the latest version of `Node.js` is installed 
@@ -218,3 +225,25 @@ class Square extends React.Component {
 ```
 
 Now if we click on a Square, an alert should pop up in the browser. 
+
+To save typing and avoid the confusing behavior of this, we will be using the arrow function syntax for event handlers: 
+
+```javascript
+class Square extends React.Component {
+  render() {
+    return (
+      <button className="square" onClick={()=>alert('click')}>
+        {this.props.value}
+      </button>
+    )
+  }
+}
+```
+
+Notice that with `onClick={()=> alert('click')}` we are passing a function as the onClick prop. React will only call this function after a click. Forgetting `() =>` and writing `onClick={alert('click')}` is a common mistake and would fire the alert every time the component re-renders. 
+
+
+For the next step, we want the Square component to "remember" that it got clicked, and fill it with an "X" mark. To "remember" things, components use `state`. 
+
+
+React components can have state by setting `this.state` in their constructors. `this.state` should be considered as private to a React component that it's defined in. 
