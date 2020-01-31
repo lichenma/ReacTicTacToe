@@ -284,5 +284,23 @@ After these changes, the `<button>` tag that is retured by Square's `render` met
 
 
 ```javascript
+class Square extends React.Component {
+  constructor(props){
+    super(props); 
+    this.state = {
+      value: null, 
+    };
+  }
 
+  render() {
+    return (
+      <button
+        className = "square"
+        onClick={() => this.setState({value: 'X'})}
+      >
+        {this.state.value}
+      </button>
+    ); 
+  }
+}
 ```
