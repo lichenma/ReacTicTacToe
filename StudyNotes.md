@@ -304,3 +304,6 @@ class Square extends React.Component {
   }
 }
 ```
+
+By calling `this.setState` from an `onClick` handler in the Square's `render` method, we tell React to re-render the Square whenever its `<button>` is clicked. After the update, the Square's `this.state.value` will be `'X'`, so we will see `X` on the game board. If you click on any Square, an `X` would show up. 
+
