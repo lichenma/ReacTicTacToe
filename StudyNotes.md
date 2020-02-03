@@ -486,4 +486,38 @@ In the previous code example, it was suggested that the `.slice()` method would 
 There are generally two approaches to changing data. The first is to `mutate` the data by directly changing the data's values. The second approach is to replace the data with a new copy which has the desired changes. 
 
 
+```javascript 
+var player = {score: 1, name: 'Jeff'};
+// with Mutation 
+player.score = 2; 
+// without Mutation 
+var newPlayer = Object.assign({}, player, {score: 2}); 
+```
+
+The end result remains the same but by not mutating or changing the underlying data directly we gain the following benefits: 
+
+
+### Complex Features Become Simple
+
+Immutability makes complex features much easier to implement. Features such as time travel and moving to previous states becomes easy as avoiding direct data mutation allows us to keep previous versions of the game's history intact, and reuse them later. 
+
+
+### Detecting Changes
+
+Detecting changes in mutable objects is difficult because it requires to mutable object to be compared to previous copies of itself and the entire object tree to be traversed. 
+
+Detecting changes in immutable objects is considerably easier. If the immutable object that is being referenced is different than the previous one, then we know that the object has changed. 
+
+
+### Determining when to Re-Render in React 
+
+The main benefit of immutability is that it helps you build pure components in React. Immutable data can easily determine if changes have been made which helps to determine when component requires re-rendering. 
+
+Creating pure components allows us to optimize the front-end performance of React. 
+
+
+
+# Function Components
+
+
 
