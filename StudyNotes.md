@@ -307,3 +307,16 @@ class Square extends React.Component {
 
 By calling `this.setState` from an `onClick` handler in the Square's `render` method, we tell React to re-render the Square whenever its `<button>` is clicked. After the update, the Square's `this.state.value` will be `'X'`, so we will see `X` on the game board. If you click on any Square, an `X` would show up. 
 
+When `setState` is called in a component, React will automatically update the child components inside of it as well. 
+
+
+# Developer Tools 
+
+The React Devtools extension for Chrome allows developers to inspect a React component tree using the browser's developer tools. 
+
+Functionalities are provided for seeing the props and the state of React components. 
+
+After installing React DevTools, you can click "Inspect" on any element of the page bringing up the developer tools and the `React tabs` should appear as the last tab on the right. We can use "Components" to inspect the component tree. 
+
+
+# Game Logic 
