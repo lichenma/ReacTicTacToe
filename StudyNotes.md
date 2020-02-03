@@ -416,4 +416,9 @@ renderSquare(i) {
 
 Now we are passing down two props from Board to Square: `value` and `onClick`. The `onClick` prop is a function that Square can call when clicked. We wil lmake the following changes to Square: 
 
-- 
+- replace `this.state.value` with `this.props.value` in Square's `render` method 
+- replace `this.setState()` with `this.props.onClick()` in Square's `render` method 
+- Delete the `constructor` from Square because Square no longer keeps track of the game's state
+ 
+
+ 
