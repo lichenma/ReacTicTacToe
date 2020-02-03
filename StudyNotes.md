@@ -443,5 +443,47 @@ When a Square is clicked, the `onClick` function provided by the Board is called
 
 ### Board Click FLow 
 
+1. The `onClick` prop on the built-in Dom `<button>` component tells React to set up a click event listener 
+2. When the button is clicked, React will call the `onClick` event handler that is defined in Square's `render()` method
+3. This event handler calls `this.props.onClick`. The Square's `onClick` prop was specified by the Board. 
+4. Since the Board passed `onClick={() => this.handleClick(i)}` to Square, the Square calls `this.handleClick(i)` when clicked
+5. We have not defined the `handleClick()` method yet but that will be handled in the following step 
+
+
+
+> The DOM `<button>` element's `onClick` attribute has a special meaning to React because it is a built-in component. In React it is conventional to use `on[Event]` names for props which represent events and `handle[Event]` for methods which handle the events
+
+
+We will now add the `handleClick` function to the Board class: 
+
+
+```javascript 
+class Board extends React.Component {
+  //...
+  handleClick(i) {
+    const squares = this.state.squares.slice(); 
+    squares[i] = 'X';
+    this.setState({squares: squares});
+  }
+  //...
+}
+```
+
+After these changes, we are able to click on the Squares to fill them, the same as we had before. However, this time the state is stored in the Board component instead of in the individual Square components. When the Board state changes, the Square components re-render automatically. Keeping the state of all squares in the Board component will allow it to determine the winner in the future. 
+
+Since the Square components no longer maintain state, the Square components receive values from the Board component and inform the Board component when they are clicked. In React terms, the Square components are now **controlled components**. The Board has complete control over them. 
+
+
+> Note how in `handleClick`, we call `.slice()` to create a copy of the squares array to modify instead of modifying the existing array. This is important and will be discussed in the following section 
+
+
+
+## Why Immutability is Important 
+
+In the previous code example, it was suggested that the `.slice()` method would be used to create a copy of the `squares` array to modify instead of modifying the existing array - this is the concept of immutability and it is very important in React. 
+
+
+There are generally two approaches to changing data. The first is to `mutate` the data by directly changing the data's values. The second approach is to replace the data with a new copy which has the desired changes. 
+
 
 
