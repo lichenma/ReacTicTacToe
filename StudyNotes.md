@@ -369,4 +369,51 @@ When the board is filled in later, the `this.state.squares` array will look some
 ]
 ```
 
+The Board's `renderSquare` method currently looks like this: 
 
+```javascript
+renderSquare(i) {
+  return <Square value={i} />;
+}
+```
+
+At the beginning, we passed the prop down from the Board to show the numbers 0-8 in each square. After that we replaced the numbers with an "X" mark determined by the Square's ow state - this causes the Square to ignore the `value` prop passed to it by the Board. 
+
+
+We will now use the prop passing mechanism - the Board will be modified to instruct each individual Square about its current value (`X`, `O`, or `null`). We have already defined the `squares` array in the Board's constructor, and we will modify the Board's `renderSquare` method to read from it: 
+
+
+```javascript 
+renderSquare(i) {
+  return <Square value={this.state.squares[i]} />;
+}
+```
+
+
+Each Square will now receive a `value` prop that will determine how it will be filled. 
+
+
+Next we need to change what happens when a Square is clicked. The Board component now maintains which squares are filled. We need to create a way for the Square to update the Board's state. Since state is considered to be private to a component that defines it, we cannot update the Board's state directly from Square. 
+
+
+Instead, we pass down a function from the Board to the Square and we will have the Square call that function when a square is clicked. We will change the `renderSquare` method in Board to: 
+
+
+```javascript
+renderSquare(i) {
+  return (
+    <Square
+      value={this.state.squares[i]}
+      onClick={() => this.handleClick(i)}
+    />
+  ); 
+}
+```
+
+
+> splitting the returned element into multiple lines for readability, and parentheses so that JavaScript doesn't insert a semicolon after `return` and break our code. 
+
+
+Now we are passing down two props from Board to Square: `value` and `onClick`. The `onClick` prop is a function that Square can call when clicked. We wil lmake the following changes to Square: 
+
+- 
