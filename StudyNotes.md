@@ -320,3 +320,53 @@ After installing React DevTools, you can click "Inspect" on any element of the p
 
 
 # Game Logic 
+
+Now we have the basic building blocks for the tic-tac-toe game. To have a complete game, we need to alternate placing "X"s and "O"s on the board as well as add logic for determining a winner. 
+
+
+
+## Lifting State Up 
+
+Currently, each Square component maintains the game's state. To check for a winner, we will maintain the value of each of the 9 squares in one location.
+
+
+One initial approach would be to get the Board to ask each Square for the Square's state. This approach is possibe but is discouraged because the code becomes difficult to understand, susceptible to bugs and hard to refactor. 
+
+Instead, the ideal approach would be to **store the game's state in the parent Board component** instead of in each Square. The Board component can tell each Square what to display by passing a prop, just like we did when we passed a number to each Square. 
+
+
+> To collect data from multiple children or to have child components communicate with each other, we need to **declare the shared state in the parent component instead**. The parent component can pass the state back down to the children using props - keeping the child components in sync with each other and with the parent component. 
+
+
+Lifting state into a parent componet is common when React components are refactored - let's take this opportunity to try it out. 
+
+
+Add a constructor to the Board and set the Board's initial state to contain an array of 9 nulls corresponding to the 9 squares: 
+
+```javascript
+class Board extends React.Component {
+  constructor(props) {
+    super(props); 
+    this.state = {
+      squares: Array(9).fill(null), 
+    }; 
+  }
+
+  renderSquare(i) {
+    return <Square value={i}>
+  }
+}
+```
+
+When the board is filled in later, the `this.state.squares` array will look something like the following: 
+
+
+```javascript 
+[
+  'O', null, 'X', 
+  'X', 'X', 'O', 
+  'O', null, null, 
+]
+```
+
+
