@@ -421,4 +421,27 @@ Now we are passing down two props from Board to Square: `value` and `onClick`. T
 - Delete the `constructor` from Square because Square no longer keeps track of the game's state
  
 
- 
+ After these changes, the Square component looks like this: 
+
+ ```javascript
+class Square extends React.Component {
+  render() {
+    return (
+      <button
+        className="square"
+        onClick={() => this.props.onClick()}
+      >
+        {this.props.value}
+      </button>
+    );
+  }
+}
+ ```
+
+When a Square is clicked, the `onClick` function provided by the Board is called. Here is a review of how this is achieved: 
+
+
+### Board Click FLow 
+
+
+
