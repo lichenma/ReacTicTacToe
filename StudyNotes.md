@@ -543,6 +543,45 @@ We have changed `this.props` to `props` both times it appears
 
 Now we need to fix the obvious defect which is that `O`'s cannot currently be marked on the board. 
 
-We will set the first move to be `X` by default. 
+We will set the first move to be `X` by default. We can set this default by modifying the initial state in our Board constructor: 
+
+```js 
+class Board extends React.Component {
+  constructor(props){
+    super(props);
+    this.start = {
+      squares: Array(9).fill(null), 
+      xIsNext: true, 
+    }; 
+  }
+}
+```
+
+Each time a player moves, `xIsNext` (boolean) will be flipped to determine which player goes next and the game's state will be saved. We will update the Board's `handleClick` function to flip the value of `xIsNext`: 
+
+```js 
+handleClick(i) {
+  const squares = this.state.squares.slice(); 
+  squares[i] = this.state.xIsNext ? 'X' : 'O'; 
+  this.setState({
+    squares: squares, 
+    xIsNext: !this.state.xIsNext, 
+  });
+}
+```
+
+With this change, `X`'s and `O`'s can take turns. Let's also change the status text in Board's `render` so that it displays which player has the next turn: 
+
+```js 
+render() {
+  const status = 'Next player: ' + 
+  (this.state.xIsNext ? 'X' : 'O'); 
+
+  return (
+    ...
+  )
+}
+```
+
 
 
