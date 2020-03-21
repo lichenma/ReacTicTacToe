@@ -519,5 +519,30 @@ Creating pure components allows us to optimize the front-end performance of Reac
 
 # Function Components
 
+We will now change the Square to be a **function component**. 
+
+In React, **function components** are a simpler way to write components that only contain a `render` method and don't have their own state. Instead of defining a class which extends `React.Component`, we can write a function that takes `props` as input and returns what should be rendered. Function components are less tedious to write than classes and many components can be expressed in this way. 
+
+
+We can replace the square class with this function: 
+
+```javascript
+function Square(props) {
+  return (
+    <button className="square" onClick={props.onClick}>
+      {props.value}
+    </button>
+  ); 
+}
+```
+
+We have changed `this.props` to `props` both times it appears 
+
+
+# Taking Turns 
+
+Now we need to fix the obvious defect which is that `O`'s cannot currently be marked on the board. 
+
+We will set the first move to be `X` by default. 
 
 
